@@ -22,8 +22,8 @@ The objective of this project is to learn how to utilize ROS packages to accurat
 [image14]: ./misc_images/robot_setup.jpg "Robot Setup"
 [image15]: ./misc_images/costmap.jpg "Large Costmap"
 [image16]: ./misc_images/costmap_smaller.jpg "Smaller Costmap"
-[image17]: ./misc_images/.jpg ""
-[image18]: ./misc_images/.jpg ""
+[image17]: ./misc_images/cost.jpg "Cost Added"
+[image18]: ./misc_images/low_tolerance.jpg "Low Tolerance"
 [image19]: ./misc_images/.jpg ""
 [image20]: ./misc_images/.jpg ""
 [image21]: ./misc_images/.jpg ""
@@ -249,13 +249,36 @@ width: 5.0
 height: 5.0
 
 ![alt text][image16]
-###### A smaller costmap will produce a gradient along the global path that is not directly affected by the end goal
+###### A smaller costmap will produce a gradient along the global path that is not directly affected by the end goal.
 
 
+#### costmap_common_params.yaml
 
+The distance range is adjusted because the costmap should be updated based off the laser readings to either add or remove obstacles.
 
+obstacle_range: 4.0
+raytrace_range: 4.0
 
+To avoid having the robot bumping on the walls, a radius is defined that conformably fits the robot size. This parameters defines a padding that is added to obstacles. The navigation planer then takes the padding into account when calculating the global path.
 
+inflation_radius: 0.6
+
+![alt text][image17]
+###### Cost added by the inflation radius to the global costmap acts as a padding around the walls
+
+The parameters below depend exclusively on the performance of the VM on which the tests were performed. It defines the rate the costmaps should be calculated and published and for how long they are valid. These values have been decreased until no timeout warning messages are received.
+
+transform_tolerance: 0.2
+update_frequency: 5.0
+publish_frequency: 2.0
+
+Finally, the tolerances of the goal have been lowered to get a very precise position and orientation when reaching the goal:
+
+xy_goal_tolerance: 0.05
+yaw_goal_tolerance: 0.01
+
+![alt text][image18]
+###### Low tolerances result in a precise final goal position and orientation
 
 
 
