@@ -66,8 +66,7 @@ The summary of the files and folders int repo is provided in the table below:
 | launch/*                  | Folder that contains all the launch files in ROS that allow us to execute more than one node simultaneously. |
 | maps/*                    | Folder that contains all the new environment using a map created by Clearpath Robotics.                      |
 | meshes/*                  | Folder that contains all the parameterization of the sensors.                                                |
-| src/*                     | Folder that contains all the project repo we have provided you with a C++ node that will navigate the robot  |
-|                           | to the goal position for you.                                                                                |
+| src/*                     | Folder that contains all the project repo we have provided you with a C++ node that will navigate the robot to the goal position for you. |
 | urdf/*                    | Folder that contains all the robot's URDF description.                                                       |
 | worlds/*                  | Folder that contains all the Gazebo worlds.                                                                  |
 | misc_images/*             | Folder containing the images of the project.                                                                 |
