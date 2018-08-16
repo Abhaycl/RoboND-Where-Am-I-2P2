@@ -60,19 +60,20 @@ And then run the following in separate terminals
 
 The summary of the files and folders int repo is provided in the table below:
 
-| File/Folder                      | Definition                                                                                            |
-| :------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| config/*                         | Folder that contains all the objects and settings of the belt image classification.                   |
-| launch/*                         | Folder that contains all the parameters and configurations for the generation of the AlexNet model.   |
-| maps/*                           | Folder that contains all the parameters and configurations for the generation of the GoogleNet model. |
-| meshes/*                         | Folder that contains all the objects and settings of the practice image classification.               |
-| src/*                            | Folder that contains all the parameters and configurations for the generation of the AlexNet model.   |
-| urdf/*                           | Folder that contains all the parameters and configurations for the generation of the GoogleNet model. |
-| worlds/*                         | Folder that contains all the parameters and configurations for the generation of the GoogleNet model. |
-| misc_images/*                    | Folder containing the images of the project.                                                          |
-|                                  |                                                                                                       |
-| README.md                        | Contains the project documentation.                                                                   |
-| README.pdf                       | Contains the project documentation in PDF format.                                                     |
+| File/Folder               | Definition                                                                                                   |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------- |
+| config/*                  | Folder that contains all the parameters and some values defined for you to help you get started.             |
+| launch/*                  | Folder that contains all the launch files in ROS that allow us to execute more than one node simultaneously. |
+| maps/*                    | Folder that contains all the new environment using a map created by Clearpath Robotics.                      |
+| meshes/*                  | Folder that contains all the parameterization of the sensors.                                                |
+| src/*                     | Folder that contains all the project repo we have provided you with a C++ node that will navigate the robot  |
+|                           | to the goal position for you.                                                                                |
+| urdf/*                    | Folder that contains all the robot's URDF description.                                                       |
+| worlds/*                  | Folder that contains all the Gazebo worlds.                                                                  |
+| misc_images/*             | Folder containing the images of the project.                                                                 |
+|                           |                                                                                                              |
+| README.md                 | Contains the project documentation.                                                                          |
+| README.pdf                | Contains the project documentation in PDF format.                                                            |
 
 ---
 
