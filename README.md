@@ -17,8 +17,8 @@ The objective of this project is to learn how to utilize ROS packages to accurat
 [image9]: ./misc_images/step_3.jpg "MCL Step 3"
 [image10]: ./misc_images/step_4.jpg "MCL Step 4"
 [image11]: ./misc_images/step_5.jpg "MCL Step 5"
-[image12]: ./misc_images/.jpg ""
-[image13]: ./misc_images/.jpg ""
+[image12]: ./misc_images/bot_udacity.jpg "Udacity Robot"
+[image13]: ./misc_images/bot_me.jpg "Custom Robot"
 [image14]: ./misc_images/.jpg ""
 [image15]: ./misc_images/.jpg ""
 [image16]: ./misc_images/.jpg ""
@@ -184,6 +184,16 @@ In the MCL example below all particles are uniformly distributed initially. In t
 ![alt text][image9]
 ![alt text][image10]
 ![alt text][image11]
-###### MCL steps visualization — Particles (green/yellow) start uniformly distributed (step 0) and then concentrates around the ground truth (blue) (steps 1–5). Robot's sensors read distances to landmarks (red).
+###### MCL steps visualization — Particles (green/yellow) start uniformly distributed (step 0) and then concentrates around the ground truth (blue) (steps 1–5). Robot's sensors read distances to landmarks (red).
 
 MCL solves the local and global localization problems but similar to KF is not suitable for addressing the kidnaped robot problem.
+
+### Model Configuration
+
+First we started configuring the world and launch files by following the instructions in the classroom, then we proceed to model the 2 robots below. The first robot based off the classroom (left) and the second is a custom robot (left).
+
+![alt text][image12]
+![alt text][image13]
+###### Classroom robot (left) and my custom robot (right).
+
+The custom robot has a differential actuation, just like the classroom robot, instead of 4 wheels of a regular car. so only 2 wheels are maintained to comply with the ROS navigation package hardware requirement #1:
