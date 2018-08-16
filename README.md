@@ -24,22 +24,14 @@ The objective of this project is to learn how to utilize ROS packages to accurat
 [image16]: ./misc_images/costmap_smaller.jpg "Smaller Costmap"
 [image17]: ./misc_images/cost.jpg "Cost Added"
 [image18]: ./misc_images/low_tolerance.jpg "Low Tolerance"
-[image19]: ./misc_images/.jpg ""
-[image20]: ./misc_images/.jpg ""
-[image21]: ./misc_images/.jpg ""
-[image22]: ./misc_images/.jpg ""
-[image23]: ./misc_images/.jpg ""
-[image24]: ./misc_images/.jpg ""
-[image25]: ./misc_images/.jpg ""
-[image26]: ./misc_images/.jpg ""
-[image27]: ./misc_images/.jpg ""
-[image28]: ./misc_images/.jpg ""
-[image29]: ./misc_images/.jpg ""
-[image30]: ./misc_images/.jpg ""
-[image31]: ./misc_images/.jpg ""
-[image32]: ./misc_images/.jpg ""
-[image33]: ./misc_images/.jpg ""
-[image34]: ./misc_images/.jpg ""
+[image19]: ./misc_images/rviz_start.jpg "Robot - Rviz Start"
+[image20]: ./misc_images/gazebo_start.jpg "Robot - Gazebo Start"
+[image21]: ./misc_images/rviz_moving.jpg "Robot - Rviz Moving"
+[image22]: ./misc_images/gazebo_moving.jpg "Robot - Gazebo Moving"
+[image23]: ./misc_images/rviz_finish.jpg "Robot - Rviz Finish"
+[image24]: ./misc_images/gazebo_finish.jpg "Robot - Gazebo Finish"
+[image25]: ./misc_images/orientation_particles.jpg "Orientation Particles"
+[image26]: ./misc_images/goal.jpg "Reached the Goal Position"
 
 ---
 
@@ -264,7 +256,7 @@ To avoid having the robot bumping on the walls, a radius is defined that conform
 inflation_radius: 0.6
 
 ![alt text][image17]
-###### Cost added by the inflation radius to the global costmap acts as a padding around the walls
+###### Cost added by the inflation radius to the global costmap acts as a padding around the walls.
 
 The parameters below depend exclusively on the performance of the VM on which the tests were performed. It defines the rate the costmaps should be calculated and published and for how long they are valid. These values have been decreased until no timeout warning messages are received.
 
@@ -278,13 +270,34 @@ xy_goal_tolerance: 0.05
 yaw_goal_tolerance: 0.01
 
 ![alt text][image18]
-###### Low tolerances result in a precise final goal position and orientation
+###### Low tolerances result in a precise final goal position and orientation.
 
 
+## Results
+
+Both the classroom and custom robots performed similarly since they have similar mass, size and actuators. In the images below the robot navigate to the position provided by the nodenavigation_goal and it is possible to observe the AMCL particles converging quickly as soon as the robot starts moving. Thanks to the confident location estimate of the robot position, it successfully follows the global path completing the navigation with a precise final position and orientation to the goal.
+
+![alt text][image19]
+![alt text][image20]
+![alt text][image21]
+![alt text][image22]
+![alt text][image23]
+![alt text][image24]
+![alt text][image25]
+![alt text][image26]
 
 
+## Discussion
+
+The project took a long time, and a lot of help from the Slack channel, to discover that the local costmap size was such a critical parameter. Only after I've reduced it to a reasonable size that it became clear how the remaining parameters work. It was infuriating and embarrassing to see the robot doing the opposite of what was expected.
+
+A second scenario was even more intriguing: after reducing gdist_scale in an attempt to reduce the goal influence over the local plan the robot would rotate in place when a goal was defined immediately across the wall, but would start moving immediately when the goal was moved somewhere else! Again the huge goal influence over the large local costmap was the reason for this surprising behavior.
+
+Also, it is important to point out that the robot would fail to localize when moved to a different location. As discussed previously this is due the fact AMCL is a bayesian algorithms that holds an internal belief of the world that is difficult to change in case of abrupt changes in the environment.
+
+One way to go about moving the robot from place to place would be to reset the AMCL internal state, back to a uniform distribution of particles, when placing the robot on a new location. This would reduce the kidnaped robot to a global localization problem (or "wake-up robot problem" in that context).
 
 
+## Future Work
 
-
-
+This project was an excellent introduction to the ROS navigation stack. I would have to explore a variety of packages that process odometry and sensor streams and outputs velocity commands to send to a mobile base. This is a really useful tool that can be applied to all kinds of mobile robots.
