@@ -73,6 +73,7 @@ The summary of the files and folders int repo is provided in the table below:
 |                           |                                                                                                              |
 | README.md                 | Contains the project documentation.                                                                          |
 | README.pdf                | Contains the project documentation in PDF format.                                                            |
+| package.xml               | Contains the udacity_bot package.                                                                            |
 
 ---
 
