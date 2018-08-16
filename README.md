@@ -6,18 +6,40 @@ The objective of this project is to learn how to utilize ROS packages to accurat
 
 [//]: # (Image References)
 
-[image1]: ./misc_images/kalman_filtering.png "Kalman filters"
-[image2]: ./misc_images/kalman_gain.png "Multidimensional Kalman filters"
-[image3]: ./misc_images/gaussian.png "Gaussian"
-[image4]: ./misc_images/formula.png "Formula"
-[image5]: ./misc_images/linear.png "Linear Approximation"
-[image6]: ./misc_images/step_0.png "MCL Step 0"
-[image7]: ./misc_images/step_1.png "MCL Step 1"
-[image8]: ./misc_images/step_2.png "MCL Step 2"
-[image9]: ./misc_images/step_3.png "MCL Step 3"
-[image10]: ./misc_images/step_4.png "MCL Step 4"
-[image11]: ./misc_images/step_5.png "MCL Step 5"
-
+[image1]: ./misc_images/kalman_filtering.jpg "Kalman filters"
+[image2]: ./misc_images/kalman_gain.jpg "Multidimensional Kalman filters"
+[image3]: ./misc_images/gaussian.jpg "Gaussian"
+[image4]: ./misc_images/formula.jpg "Formula"
+[image5]: ./misc_images/linear.jpg "Linear Approximation"
+[image6]: ./misc_images/step_0.jpg "MCL Step 0"
+[image7]: ./misc_images/step_1.jpg "MCL Step 1"
+[image8]: ./misc_images/step_2.jpg "MCL Step 2"
+[image9]: ./misc_images/step_3.jpg "MCL Step 3"
+[image10]: ./misc_images/step_4.jpg "MCL Step 4"
+[image11]: ./misc_images/step_5.jpg "MCL Step 5"
+[image12]: ./misc_images/.jpg ""
+[image13]: ./misc_images/.jpg ""
+[image14]: ./misc_images/.jpg ""
+[image15]: ./misc_images/.jpg ""
+[image16]: ./misc_images/.jpg ""
+[image17]: ./misc_images/.jpg ""
+[image18]: ./misc_images/.jpg ""
+[image19]: ./misc_images/.jpg ""
+[image20]: ./misc_images/.jpg ""
+[image21]: ./misc_images/.jpg ""
+[image22]: ./misc_images/.jpg ""
+[image23]: ./misc_images/.jpg ""
+[image24]: ./misc_images/.jpg ""
+[image25]: ./misc_images/.jpg ""
+[image26]: ./misc_images/.jpg ""
+[image27]: ./misc_images/.jpg ""
+[image28]: ./misc_images/.jpg ""
+[image29]: ./misc_images/.jpg ""
+[image30]: ./misc_images/.jpg ""
+[image31]: ./misc_images/.jpg ""
+[image32]: ./misc_images/.jpg ""
+[image33]: ./misc_images/.jpg ""
+[image34]: ./misc_images/.jpg ""
 
 ---
 
@@ -163,3 +185,5 @@ In the MCL example below all particles are uniformly distributed initially. In t
 ![alt text][image10]
 ![alt text][image11]
 ###### MCL steps visualization — Particles (green/yellow) start uniformly distributed (step 0) and then concentrates around the ground truth (blue) (steps 1–5). Robot's sensors read distances to landmarks (red).
+
+MCL solves the local and global localization problems but similar to KF is not suitable for addressing the kidnaped robot problem.
