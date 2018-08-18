@@ -94,9 +94,14 @@ The summary of the files and folders int repo is provided in the table below:
 
 Where Am I? The goal of this project is to configure a number of ROS packages that can be used in conjunction to accurately localize and navigate a mobile robot inside a provided map in the Gazebo and RViz simulation environments. A mobile robot model for Gazebo is developed to create the own ROS package, and the AMCL and Navigation ROS packages are integrated for localizing the robot in the provided map. The parameters are tuned for the ROS packages to improve the localization results in the map. Two different robot models, udacity robot and custom robot, are considered for performance evaluation. After achieving the desired results for udacity robot, custom robot is implemented with significant changes to the robot’s base and the sensor locations. The parameter settings with custom robot is checked, and the localization results are improved upon as required for custom robot.
 
+
 ## Introduction
 
 This project consists of creating a complete ROS package that includes a Gazebo world, a robot model in URDF and using the ROS navigation stack to localize the robot on the map as well as move it to a desired destination and pose avoiding any obstacles on the way. There are several aspects of robotics to learn about with a focus on ROS. Those includes building a mobile robot for simulated task, creating a ROS package that launches a custom robot model in a gazebo world and utilizes packagges like AMCL and the navigation stack, exploring, adding, and tuning specific parameters corresponding to each package to archive the best localization results.
+
+There are three different types of localization problems. Firstly, the easiest localization problem is called position tracking. It's also known as local localization. In thos problem, the robot knows its initial pose and the localization challenge entails estimating the robot's pose as it moves out on the environment. This problem is not as trivial since there's always some uncertainty in robot motion, Howover, the uncertainty is limited to regions surrounding the robot. Secondarily, a more complicated localization challenge is global localization. In this case, the robot's initial pose is unknown and the robot must determine its pose relative to the ground truth map. The amount of uncertainty in global localization is much grather than in position tracking, making it a much more difficult problem. Finally, the most challenging localization problem is the Kidnapped Robot problem. This problem is just like global localization except that the robot may be kidnapped at eny time and moved to a new location on the map.
+
+In the real world, it has to be considered whether environment is static meaning unchanging, or dynamic where objects may shift over time. Dynamic enviroments are more challenging to localiza in.
 
 
 ## Background / Formulation
