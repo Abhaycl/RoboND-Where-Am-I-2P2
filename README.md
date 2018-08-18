@@ -282,6 +282,7 @@ Finally, the tolerances of the goal have been lowered to get a very precise posi
 ### Technical observations on the chosen times and parameters.
 
 If larger dimensions had been applied to the robot, it would have affected our travel times, perhaps in this particular case it would have been necessary to use more sensors to determine the position of the vehicle, but we have chosen a customized robot that has excellent dimensions with the appropriate sensors. Putting in 5 to 20 particles saves time in processing by requiring less hardware resources, in translation and rotation movements by reducing them were obtained more frequently status updates reducing the location of uncertainty to a minimum, To reduce the influence of the target (gdist_scale) and increase compliance with the global route (pdist_scale), the reduction in the size of the local cost map to approach the width of the corridor to follow the calculated global path is greatly influenced by the increase in the radius of the walls to prevent the robot from hitting the walls constantly. All these changes in the parameters allowed a reduction in the processing time giving the robot a certain precision in the fulfillment of the path so that the robot could reach the goal in the shortest time.
+
 ![alt text][image27]
 
 
