@@ -96,7 +96,7 @@ Where Am I? The goal of this project is to configure a number of ROS packages th
 
 ## Introduction
 
-This project consists of creating a complete ROS package that includes a Gazebo world, a robot model in URDF and using the ROS navigation stack to localize the robot on the map as well as move it to a desired destination and pose avoiding any obstacles on the way.
+This project consists of creating a complete ROS package that includes a Gazebo world, a robot model in URDF and using the ROS navigation stack to localize the robot on the map as well as move it to a desired destination and pose avoiding any obstacles on the way. There are several aspects of robotics to learn about with a focus on ROS. Those includes building a mobile robot for simulated task, creating a ROS package that launches a custom robot model in a gazebo world and utilizes packagges like AMCL and the navigation stack, exploring, adding, and tuning specific parameters corresponding to each package to archive the best localization results.
 
 
 ## Background / Formulation
