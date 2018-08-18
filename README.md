@@ -32,6 +32,7 @@ The objective of this project is to learn how to utilize ROS packages to accurat
 [image24]: ./misc_images/gazebo_finish.jpg "Robot - Gazebo Finish"
 [image25]: ./misc_images/orientation_particles.jpg "Orientation Particles"
 [image26]: ./misc_images/goal.jpg "Reached the Goal Position"
+[image27]: ./misc_images/robot_reached_goal.jpg "Time Reached the Goal Position"
 
 ---
 
@@ -58,7 +59,7 @@ And then run the following in separate terminals
 
 ---
 
-The summary of the files and folders int repo is provided in the table below:
+The summary of the files and folders within repo is provided in the table below:
 
 | File/Folder               | Definition                                                                                                   |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------- |
@@ -207,44 +208,44 @@ Now it will be described the choice the parameters for each of the packages from
 
 The only parameters that were needed for tweek in the AMCL launch file was the translational and rotational movement required before performing a filter update. The default values were too large for the slow moving robot. After reducing them by an order of magnitude, status updates were obtained far more frequently resulting in a reduction of the location uncertainty to a minimum.
 
-update_min_d = 0.01
-update_min_a = 0.005
+* update_min_d = 0.01
+* update_min_a = 0.005
 
 With the experiments it was discovered that very good results can be obtained with just 5–20 particles! The more particles the more accurate location will be but at the cost of additional compute resources. To keep the state updates as frequent as posible it's chosen to keep the particle count down to a minimum.
 
-min_particles = 5
-max_particles = 20
+* min_particles = 5
+* max_particles = 20
 
 Noisy readings from the laser sensor are also discovered. It would at times detect obstacles at short distances when there was nothing there. To prevent those readings to interfere with the localization, a minimum range of lasers is defined.
 
-laser_min_range = 0.4
+* laser_min_range = 0.4
 
 Finally, the estimate of the initial pose is set to zero to coincide with the location of the robot at start-up.
 
-initial_pose = (0, 0, 0)
+* initial_pose = (0, 0, 0)
 
 
 #### TrajectoryPlannerROS — base_local_planner_params.yaml
 
 The trajectory planner is responsible for computing velocity commands to send to the mobile base of the robot given a high-level plan. It seems useful to first understand what was going on under the planner's covers. Enabling the publish_cost_grid_pc parameter allows you to visualize the cost_cloud topic in RViz.
 
-publish_cost_grid_pc: true
+* publish_cost_grid_pc: true
 
 ![alt text][image15]
 ###### A large costmap is heavily influenced by the navigation goal.
 
 It's detected that the robot was deviating too much from the global path as if attempting to head straight to the goal. Therefore, the following parameters are changed to reduce the goal influence (gdist_scale) and increasing the global path (pdist_scale) compliance.
 
-pdist_scale: 1.0
-gdist_scale: 0.4
+* pdist_scale: 1.0
+* gdist_scale: 0.4
 
 
 #### local_costmap_params.yaml
 
 The local costmap size was by far the most important parameters to get right to successfully navigate around the corner at the end of the corridor. This is because the goal creates a huge influence over the local costmap. This resulted in the robot getting pulled away from the calculated global path. Reducing the size of the local costmap to approximate to the corridor width solved this problem.
 
-width: 5.0
-height: 5.0
+* width: 5.0
+* height: 5.0
 
 ![alt text][image16]
 ###### A smaller costmap will produce a gradient along the global path that is not directly affected by the end goal.
@@ -254,29 +255,34 @@ height: 5.0
 
 The distance range is adjusted because the costmap should be updated based off the laser readings to either add or remove obstacles.
 
-obstacle_range: 4.0
-raytrace_range: 4.0
+* obstacle_range: 4.0
+* raytrace_range: 4.0
 
 To avoid having the robot bumping on the walls, a radius is defined that conformably fits the robot size. This parameters defines a padding that is added to obstacles. The navigation planer then takes the padding into account when calculating the global path.
 
-inflation_radius: 0.6
+* inflation_radius: 0.6
 
 ![alt text][image17]
 ###### Cost added by the inflation radius to the global costmap acts as a padding around the walls.
 
 The parameters below depend exclusively on the performance of the VM on which the tests were performed. It defines the rate the costmaps should be calculated and published and for how long they are valid. These values have been decreased until no timeout warning messages are received.
 
-transform_tolerance: 0.2
-update_frequency: 5.0
-publish_frequency: 2.0
+* transform_tolerance: 0.2
+* update_frequency: 5.0
+* publish_frequency: 2.0
 
 Finally, the tolerances of the goal have been lowered to get a very precise position and orientation when reaching the goal:
 
-xy_goal_tolerance: 0.05
-yaw_goal_tolerance: 0.01
+* xy_goal_tolerance: 0.05
+* yaw_goal_tolerance: 0.01
 
 ![alt text][image18]
 ###### Low tolerances result in a precise final goal position and orientation.
+
+### Technical observations on the chosen times and parameters.
+
+If larger dimensions had been applied to the robot, it would have affected our travel times, perhaps in this particular case it would have been necessary to use more sensors to determine the position of the vehicle, but we have chosen a customized robot that has excellent dimensions with the appropriate sensors. Putting in 5 to 20 particles saves time in processing by requiring less hardware resources, in translation and rotation movements by reducing them were obtained more frequently status updates reducing the location of uncertainty to a minimum, To reduce the influence of the target (gdist_scale) and increase compliance with the global route (pdist_scale), the reduction in the size of the local cost map to approach the width of the corridor to follow the calculated global path is greatly influenced by the increase in the radius of the walls to prevent the robot from hitting the walls constantly. All these changes in the parameters allowed a reduction in the processing time giving the robot a certain precision in the fulfillment of the path so that the robot could reach the goal in the shortest time.
+![alt text][image27]
 
 
 ## Results
