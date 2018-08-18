@@ -123,7 +123,7 @@ In the real world, it has to be considered whether environment is static meaning
 
 In the course program we were introduced to two methods of location: Kalman filters and particle filters. Both probabilistic methods can be successfully applied to position tracking and global location and will later help locate my robot in Gazebo and RViz.​
 
-### Kalman filters
+#### Kalman filters
 
 The Kalman filter estimates the value of a variable by updating its estimate as measurement data is collected filtering out the noise. Kalman Filters models the state uncertainty using Gaussians and it is capable of making accurate estimates with just a few data points.
 
@@ -132,7 +132,7 @@ KF starts with an initial state estimate then performs the following cycle: meas
 ![alt text][image1]
 
 
-### Multidimensional KF
+#### Multidimensional KF
 
 Most of real world robots operates on multiple dimensions, i.e. a drone's position is defined by x, y and z coordinates and orientation in roll, pitch and yaw angles. This motivates generalizing the KF to multiple dimensions with equations in matrix format.
 
@@ -142,7 +142,7 @@ The MKF algorithm consists of calculating the Kalman Gain K that determines how 
 ###### The Kalman gain K averages the measurement update P and motion update x
 
 
-### Extended Kalman Filter
+#### Extended Kalman Filter
 
 Kalman Filter assumes that motion and measurement models are linear and that the state space can be represented by a unimodal Gaussian distribution. Most mobile robots will execute non linear motion like following a curve. Non linear actions will result in non-Gaussian posterior distributions that cannot be properly modeled by a closed form equation.
 
