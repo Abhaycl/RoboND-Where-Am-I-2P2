@@ -100,11 +100,6 @@ Where Am I? The goal of this project is to configure a number of ROS packages th
 
 This project consists of creating a complete ROS package that includes a Gazebo world, a robot model in URDF and using the ROS navigation stack to localize the robot on the map as well as move it to a desired destination and pose avoiding any obstacles on the way. There are several aspects of robotics to learn about with a focus on ROS. Those includes building a mobile robot for simulated task, creating a ROS package that launches a custom robot model in a gazebo world and utilizes packages like AMCL and the navigation stack, exploring, adding, and tuning specific parameters corresponding to each package to archive the best localization results.
 
-There are three different types of localization problems. Firstly, the easiest localization problem is called position tracking. It's also known as local localization. In this problem, the robot knows its initial pose and the localization challenge entails estimating the robot's pose as it moves out on the environment. This problem is not as trivial since there's always some uncertainty in robot motion, However, the uncertainty is limited to regions surrounding the robot. Secondarily, a more complicated localization challenge is global localization. In this case, the robot's initial pose is unknown and the robot must determine its pose relative to the ground truth map. The amount of uncertainty in global localization is much greater than in position tracking, making it a much more difficult problem. Finally, the most challenging localization problem is the Kidnapped Robot problem. This problem is just like global localization except that the robot may be kidnapped at eny time and moved to a new location on the map.
-
-In the real world, it has to be considered whether environment is static meaning unchanging, or dynamic where objects may shift over time. Dynamic enviroments are more challenging to localiza in.
-
-
 ## Background / Formulation
 
 Robots often operates in unpredictable environments where the agent is uncertain about its state. Using calculus and probability theory it is possible to manage this uncertainty and represent the robots beliefs of its state in mathematical form that can later be used for decision making.
@@ -122,8 +117,13 @@ For cases where the initial position is unknown and needs to be determined at as
 #### 3. Kidnaped robot
 
 The most difficult localization problem is to recover from abrupt changes in position like moving a robot from a position on the map to another. This is particularly difficult for bayesian algorithms to recover from since they preserve an internal belief that interfere with the new robot state.
-​
-En el programa del curso se nos presentaron dos métodos de localización: Filtros Kalman y filtros de partículas. Ambos métodos probabilísticos se pueden aplicar con éxito al seguimiento de posición y a la localización global y más tarde ayudarán a localizar mi robot en Gazebo y RViz.
+
+In the real world, it has to be considered whether environment is static meaning unchanging, or dynamic where objects may shift over time. Dynamic enviroments are more challenging to localiza in.
+
+
+## Background / Formulation
+
+In the course program we were introduced to two methods of location: Kalman filters and particle filters. Both probabilistic methods can be successfully applied to position tracking and global location and will later help locate my robot in Gazebo and RViz.​
 
 ### Kalman filters
 
