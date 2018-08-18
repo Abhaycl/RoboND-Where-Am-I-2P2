@@ -100,8 +100,6 @@ Where Am I? The goal of this project is to configure a number of ROS packages th
 
 This project consists of creating a complete ROS package that includes a Gazebo world, a robot model in URDF and using the ROS navigation stack to localize the robot on the map as well as move it to a desired destination and pose avoiding any obstacles on the way. There are several aspects of robotics to learn about with a focus on ROS. Those includes building a mobile robot for simulated task, creating a ROS package that launches a custom robot model in a gazebo world and utilizes packages like AMCL and the navigation stack, exploring, adding, and tuning specific parameters corresponding to each package to archive the best localization results.
 
-## Background / Formulation
-
 Robots often operates in unpredictable environments where the agent is uncertain about its state. Using calculus and probability theory it is possible to manage this uncertainty and represent the robots beliefs of its state in mathematical form that can later be used for decision making.
 
 For a robot to find its position on a map (localization problem) it needs to filter noisy sensor data using probabilistic methods. There are 3 types of localization problems:
